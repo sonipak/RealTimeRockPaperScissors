@@ -17,29 +17,27 @@ public class QueueButton : MonoBehaviour {
 	[SerializeField]
 	Text text;
 	Button button;
-
 	// Use this for initialization
 	void Start () {
-		button = GetComponent<Button> ();
-		button.onClick.AddListener (clickedButton);
 		GPGScripts = GPGMethods.Instance;
 		GPGScripts.SignIn ();
+		button = transform.GetComponent<Button> ();
+		button.onClick.AddListener (ButtonClicked);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!GPGScripts.SignedIn) {
-			button.enabled = false;
 			text.text = "Not Signed In";
-		} else if(GPGScripts.SignedIn){
-			button.enabled = true;
+		} else if (GPGScripts.SignedIn && GPGScripts.RoomSetupProgress == 0f) {
 			text.text = "Find Match";
+		} else if (GPGScripts.RoomSetupProgress > 0f) {
+			text.text = "Loading Room " + GPGScripts.RoomSetupProgress + "%...";
 		}
 	}
 
-	async void clickedButton(){
+	void ButtonClicked(){
 		button.enabled = false;
-		await Task.Run(() => GPGScripts.QueueRandomMatch (1, 1, 0));
-		text.text = "Queueing for match... ";
+		GPGScripts.QueueRandomMatch (1, 1, 0);
 	}
 }

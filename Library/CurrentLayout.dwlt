@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 192}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 121
+  controlID: 127
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 492}
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 9
+  controlID: 65
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 79
+  controlID: 85
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -496,7 +496,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 84f4f5ff74f5f5ff90f6f5ffbeb5ffff9cb6ffffb4b7ffff9efbffff00000000602b0000
+    m_ExpandedIDs: 5478feff3679feff527afeff30b6feff14b7feff30b8feff6436ffff4837ffff6038ffff1a6affff8670ffff6a71ffff8672fffff0b2ffffd4b3fffff0b4ffff9efbffff00000000602b00007a2b0000a02d0000ba2d0000802e00001c300000363000008c310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -558,18 +558,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/GooglePlayGames/Platforms
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/GooglePlayGames/Platforms
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\Moiz\Documents\Rock Paper Scissors
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 37}
-    m_SelectedIDs: e22a0000
-    m_LastClickedID: 10978
+    scrollPos: {x: 0, y: 133}
+    m_SelectedIDs: b22a0000
+    m_LastClickedID: 10930
     m_ExpandedIDs: 00000000502a00005c2a0000902a00009e2a0000e22a0000442b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000502a00005c2a0000e22a0000262b0000442b0000
+    m_ExpandedIDs: 00000000502a00005c2a0000902a00009e2a0000e22a0000442b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -629,18 +629,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c6230000ce270000222800000e280000f8310000ba270000222a0000204d000058280000ee27000028590000842a0000b02e000032360000ee35000080360000342c0000402c0000c42d0000ea2d000000000000fe2e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Editor
-      m_OriginalName: Editor
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10896
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:

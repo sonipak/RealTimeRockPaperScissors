@@ -16,8 +16,10 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 		Initialize();
 	}
 
-	public bool Initialized{ get; private set; } = false;
-	public bool SignedIn{ get; private set;} = false;
+	public bool Initialized{ get; private set; }
+	public bool SignedIn{ get; private set;}
+	public bool CreatingRoom{ get; private set;}
+	public bool RoomCreated{ get; private set; }
 	public float RoomSetupProgress{ get; private set;}
 
 
@@ -53,10 +55,12 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 	}
 
 	public void OnRoomSetupProgress(float percent){
+		CreatingRoom = true;
 		RoomSetupProgress = percent;
 	}
 	public void OnRoomConnected(bool success){
-		 
+		CreatingRoom = false;
+		RoomCreated = true;
 	}
 	public void OnLeftRoom(){
 	
