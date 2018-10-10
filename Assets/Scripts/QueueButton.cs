@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms;
@@ -12,9 +13,6 @@ using GooglePlayGames.BasicApi.Multiplayer;
 public class QueueButton : MonoBehaviour {
 	const int MIN_OPPONENTS = 1, MAX_OPPONENTS = 1;
 	const int gameVariant = 0;
-
-	[SerializeField]
-	GameObject GPGObject;
 	GPGMethods GPGScripts;
 	[SerializeField]
 	Text text;
@@ -24,7 +22,7 @@ public class QueueButton : MonoBehaviour {
 	void Start () {
 		button = GetComponent<Button> ();
 		button.onClick.AddListener (clickedButton);
-		GPGScripts = GPGObject.GetComponent<GPGMethods> ();
+		GPGScripts = GPGMethods.Instance;
 		GPGScripts.SignIn ();
 	}
 	
@@ -33,15 +31,15 @@ public class QueueButton : MonoBehaviour {
 		if (!GPGScripts.SignedIn) {
 			button.enabled = false;
 			text.text = "Not Signed In";
-		} else {
+		} else if(GPGScripts.SignedIn){
 			button.enabled = true;
 			text.text = "Find Match";
 		}
 	}
 
-	void clickedButton(){
+	async void clickedButton(){
 		button.enabled = false;
-		GPGScripts.QueueRandomMatch (1, 1, 0);
+		await Task.Run(() => GPGScripts.QueueRandomMatch (1, 1, 0));
 		text.text = "Queueing for match... ";
 	}
 }

@@ -7,16 +7,24 @@ using GooglePlayGames.BasicApi.Multiplayer;
 using System.Threading.Tasks;
 using System;
 
-public class GPGMethods : MonoBehaviour, RealTimeMultiplayerListener {
-	public bool Initialized{ get; private set; }
-	public bool SignedIn{ get; private set;}
+public sealed class GPGMethods :  RealTimeMultiplayerListener {
+
+	private static readonly Lazy<GPGMethods> lazy = new Lazy<GPGMethods> (() => new GPGMethods ());
+	public static GPGMethods Instance {get {return lazy.Value;}}
+
+	private GPGMethods(){
+		Initialize();
+	}
+
+	public bool Initialized{ get; private set; } = false;
+	public bool SignedIn{ get; private set;} = false;
 	public float RoomSetupProgress{ get; private set;}
 
-	void Awake(){
-		DontDestroyOnLoad (gameObject);
 
+	public void Initialize(){
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder ().Build ();
 		PlayGamesPlatform.InitializeInstance (config);
+		PlayGamesPlatform.DebugLogEnabled = true;
 		PlayGamesPlatform.Activate ();
 
 		RoomSetupProgress = 0f;
@@ -24,26 +32,21 @@ public class GPGMethods : MonoBehaviour, RealTimeMultiplayerListener {
 	}
 
 	public void SignIn(){
-		if (Application.isEditor) {
-			SignedIn = true;
-		}
 		if (Initialized) {
-			Social.Active.Authenticate (Social.localUser, (bool success) => {
+			Social.Active.Authenticate (Social.localUser, success => {
 				if (success) {
 					SignedIn = true;
-				} else {
-					Debug.Log ("GPG Login Failed");
 				}
 			});
-		}else {
+		} else {
 			Debug.Log ("Social platform has not been initialized yet");
 		}
 
 	}
-
+		
 	public void QueueRandomMatch(uint minimumPlayers, uint maxPlayers, uint gameVariant){
 		if (SignedIn) {
-			PlayGamesPlatform.Instance.RealTime.CreateQuickGame (minimumPlayers, maxPlayers, gameVariant, this); // here is error
+				PlayGamesPlatform.Instance.RealTime.CreateQuickGame (minimumPlayers, maxPlayers, gameVariant, this);
 		} else {
 			Debug.Log ("User is not signed into GPG");
 		}
