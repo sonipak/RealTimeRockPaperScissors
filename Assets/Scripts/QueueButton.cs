@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms;
@@ -24,17 +25,23 @@ public class QueueButton : MonoBehaviour {
 		button = GetComponent<Button> ();
 		button.onClick.AddListener (clickedButton);
 		GPGScripts = GPGObject.GetComponent<GPGMethods> ();
+		GPGScripts.SignIn ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!GPGScripts.SignedIn) {
+			button.enabled = false;
+			text.text = "Not Signed In";
+		} else {
+			button.enabled = true;
+			text.text = "Find Match";
+		}
 	}
 
 	void clickedButton(){
 		button.enabled = false;
-		text.text = "Signing in...";
-		if(GPGScripts.SignInAsync())
-			text.text = "Signed in!";
+		GPGScripts.QueueRandomMatch (1, 1, 0);
+		text.text = "Queueing for match... ";
 	}
 }

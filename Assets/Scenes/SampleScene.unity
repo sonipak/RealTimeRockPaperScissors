@@ -396,6 +396,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1010521203}
+--- !u!1 &1092533991 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1954056546870854, guid: e491b5d708e134845aa727d02fa38728,
+    type: 2}
+  m_PrefabInternal: {fileID: 273109470}
 --- !u!1 &1229091322
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,5 +586,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ff0cc70991b7f448a24c85f2b8eac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GPGObject: {fileID: 0}
+  GPGObject: {fileID: 1092533991}
   text: {fileID: 1010521205}

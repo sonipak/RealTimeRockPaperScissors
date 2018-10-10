@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\QueueButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GPGMethods.cs">
     <Files>
-      <File FileName="Assets\Scripts\QueueButton.cs" Line="38" Column="29" />
-      <File FileName="Assets\Scripts\GPGMethods.cs" Line="25" Column="37" />
+      <File FileName="Assets\Scripts\QueueButton.cs" Line="45" Column="39" />
+      <File FileName="Assets\Scripts\GPGMethods.cs" Line="46" Column="121" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
