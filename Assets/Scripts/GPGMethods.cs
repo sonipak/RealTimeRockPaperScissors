@@ -57,6 +57,7 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 	public void OnRoomSetupProgress(float percent){
 		CreatingRoom = true;
 		RoomSetupProgress = percent;
+		PlayGamesPlatform.Instance.RealTime.ShowWaitingRoomUI ();
 	}
 	public void OnRoomConnected(bool success){
 		CreatingRoom = false;

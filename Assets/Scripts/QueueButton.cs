@@ -38,6 +38,7 @@ public class QueueButton : MonoBehaviour {
 
 	void ButtonClicked(){
 		button.enabled = false;
+		text.text = "Finding Match...";
 		GPGScripts.QueueRandomMatch (1, 1, 0);
 	}
 }
