@@ -48,7 +48,8 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 		
 	public void QueueRandomMatch(uint minimumPlayers, uint maxPlayers, uint gameVariant){
 		if (SignedIn) {
-				PlayGamesPlatform.Instance.RealTime.CreateQuickGame (minimumPlayers, maxPlayers, gameVariant, this);
+			CreatingRoom = true;
+			PlayGamesPlatform.Instance.RealTime.CreateQuickGame (minimumPlayers, maxPlayers, gameVariant, this);
 		} else {
 			Debug.Log ("User is not signed into GPG");
 		}

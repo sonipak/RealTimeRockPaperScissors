@@ -29,16 +29,21 @@ public class QueueButton : MonoBehaviour {
 	void Update () {
 		if (!GPGScripts.SignedIn) {
 			text.text = "Not Signed In";
-		} else if (GPGScripts.SignedIn && GPGScripts.RoomSetupProgress == 0f) {
+			button.enabled = false;
+		} else if (GPGScripts.SignedIn && !GPGScripts.CreatingRoom) {
 			text.text = "Find Match";
-		} else if (GPGScripts.RoomSetupProgress > 0f) {
+			button.enabled = true;
+		} else if (GPGScripts.CreatingRoom) {
 			text.text = "Loading Room " + GPGScripts.RoomSetupProgress + "%...";
+			button.enabled = false;
+		} else if (GPGScripts.RoomCreated){
+			text.text = "Match Found!";
 		}
+
 	}
 
 	void ButtonClicked(){
 		button.enabled = false;
-		text.text = "Finding Match...";
 		GPGScripts.QueueRandomMatch (1, 1, 0);
 	}
 }

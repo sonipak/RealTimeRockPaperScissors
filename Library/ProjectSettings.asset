@@ -126,7 +126,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: .22
+  bundleVersion: .25
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -161,7 +161,7 @@ PlayerSettings:
     Android: com.Sonipak.anilorak
     Standalone: com.Company.ProductName
   buildNumber: {}
-  AndroidBundleVersionCode: 17
+  AndroidBundleVersionCode: 20
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -245,7 +245,7 @@ PlayerSettings:
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/Moiz/Documents/wave/keystore.keystore
-  AndroidKeyaliasName: sonipak
+  AndroidKeyaliasName: 
   AndroidTVCompatibility: 0
   AndroidIsGame: 0
   AndroidEnableTango: 0
