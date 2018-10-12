@@ -10,13 +10,14 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi.Multiplayer;
 
 
-public class QueueButton : MonoBehaviour {
+public class PlayButton : MonoBehaviour {
 	const int MIN_OPPONENTS = 1, MAX_OPPONENTS = 1;
 	const int gameVariant = 0;
 	GPGMethods GPGScripts;
-	[SerializeField]
-	Text text;
+
+	public Text text;
 	Button button;
+
 	// Use this for initialization
 	void Start () {
 		GPGScripts = GPGMethods.Instance;
@@ -27,23 +28,26 @@ public class QueueButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GPGScripts.SignedIn) {
-			text.text = "Not Signed In";
-			button.enabled = false;
-		} else if (GPGScripts.SignedIn && !GPGScripts.CreatingRoom) {
-			text.text = "Find Match";
-			button.enabled = true;
-		} else if (GPGScripts.CreatingRoom) {
-			text.text = "Loading Room " + GPGScripts.RoomSetupProgress + "%...";
-			button.enabled = false;
-		} else if (GPGScripts.RoomCreated){
-			text.text = "Match Found!";
+		if (!Application.isEditor) {
+			if (!GPGScripts.SignedIn) {
+				text.text = "You must be signed in!";
+				button.interactable = false;
+			} else if (GPGScripts.SignedIn && !GPGScripts.CreatingRoom) {
+				text.text = "";
+				button.interactable = true;
+			} else if (GPGScripts.CreatingRoom) {
+				text.text = "Loading Room " + GPGScripts.RoomSetupProgress + "%...";
+				button.interactable = false;
+			} else if (GPGScripts.RoomCreated) {
+				text.text = "Match Found!";
+			}
+		} else {
+			text.text = "Test Mode";
 		}
 
 	}
 
 	void ButtonClicked(){
-		button.enabled = false;
 		GPGScripts.QueueRandomMatch (1, 1, 0);
 	}
 }
