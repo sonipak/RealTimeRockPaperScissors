@@ -14,16 +14,14 @@ public class PlayButton : MonoBehaviour {
 	const int MIN_OPPONENTS = 1, MAX_OPPONENTS = 1;
 	const int gameVariant = 0;
 	GPGMethods GPGScripts;
-
 	public Text text;
-	Button button;
+	public Button button;
+	public Image image;
 
 	// Use this for initialization
 	void Start () {
 		GPGScripts = GPGMethods.Instance;
 		GPGScripts.SignIn ();
-		button = transform.GetComponent<Button> ();
-		button.onClick.AddListener (ButtonClicked);
 	}
 	
 	// Update is called once per frame
