@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SocialPlatforms;
+using UnityEngine.SceneManagement;
 using GooglePlayGames.BasicApi;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi.Multiplayer;
@@ -20,8 +21,13 @@ public class PlayButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		button.onClick.AddListener(ButtonClicked);
+		PlayerPrefs.SetString ("Name", "Despacito"); //temp
 		GPGScripts = GPGMethods.Instance;
 		GPGScripts.SignIn ();
+		if(Application.isEditor) {
+			text.text = "Test Mode";
+		}
 	}
 	
 	// Update is called once per frame
@@ -34,18 +40,23 @@ public class PlayButton : MonoBehaviour {
 				text.text = "";
 				button.interactable = true;
 			} else if (GPGScripts.CreatingRoom) {
-				text.text = "Loading Room " + GPGScripts.RoomSetupProgress + "%...";
+				text.text = "Searching for a match...";
 				button.interactable = false;
 			} else if (GPGScripts.RoomCreated) {
 				text.text = "Match Found!";
 			}
-		} else {
-			text.text = "Test Mode";
-		}
+		} 
 
+		if (GPGScripts.RoomCreated) {
+			SceneManager.LoadSceneAsync ("Game Play", LoadSceneMode.Single);
+		}
 	}
 
 	void ButtonClicked(){
-		GPGScripts.QueueRandomMatch (1, 1, 0);
+		if (Application.isEditor) {
+			text.text = "Click";
+		} else {
+			GPGScripts.QueueRandomMatch (1, 1, 0);
+		}
 	}
 }

@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Rock Paper Scissors/Scenes/Main Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Rock Paper Scissors/Scenes/New Scene.unity
-    guid: 06e04906316311b42a58cdfcb0a6dcdb
+  - enabled: 1
+    path: Assets/Rock Paper Scissors/Scenes/Game Play.unity
+    guid: 1fd24388fd65b1a4a8394363ae4c93bb

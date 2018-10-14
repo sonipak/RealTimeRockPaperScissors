@@ -20,7 +20,10 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 	public bool SignedIn{ get; private set;}
 	public bool CreatingRoom{ get; private set;}
 	public bool RoomCreated{ get; private set; }
+	public bool EnemyDisconnected{ get; private set; }
 	public float RoomSetupProgress{ get; private set;}
+	public string PlayerName{ get; private set; }
+	public string EnemyName{ get; private set;}
 
 
 	public void Initialize(){
@@ -31,6 +34,8 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 
 		RoomSetupProgress = 0f;
 		Initialized = true;
+		PlayerName = PlayerPrefs.GetString ("Name");
+		EnemyName = "...";
 	}
 
 	public void SignIn(){
@@ -61,21 +66,26 @@ public sealed class GPGMethods :  RealTimeMultiplayerListener {
 	}
 	public void OnRoomConnected(bool success){
 		CreatingRoom = false;
+		byte[] name = System.Text.Encoding.UTF8.GetBytes ("Other Player");
+		PlayGamesPlatform.Instance.RealTime.SendMessageToAll (true, name);
 		RoomCreated = true;
 	}
 	public void OnLeftRoom(){
-	
+		RoomCreated = false;
+		RoomSetupProgress = 0f;
+		EnemyName = "...";
 	}
 	public void OnParticipantLeft(Participant participant){
-
+		EnemyDisconnected = true;
+		EnemyName = "...";
 	}
 	public void OnPeersConnected(string[] participantIds){
-
+		
 	}
 	public void OnPeersDisconnected(string[] participantIds){
-
+		
 	}
 	public void OnRealTimeMessageReceived(bool isReliable, string senderId, byte[] data){
-
+		EnemyName = System.Text.Encoding.UTF8.GetString (data);
 	}
 }
