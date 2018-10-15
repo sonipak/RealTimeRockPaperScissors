@@ -40,6 +40,10 @@ public class GameHandler : MonoBehaviour {
 			ItsGameTime ();
 		}
 
+		if (GPGScripts.PlayerConnectionConfirmed && GPGScripts.EnemyPlayerConnectionConfirmed && enemyName.text == "...") {
+			GPGScripts.SendMessage ("namerequest");
+		}
+
 		if (playerMove != "" && enemyMove != "") {
 			DetermineResult (playerMove, enemyMove);
 		}
@@ -77,6 +81,9 @@ public class GameHandler : MonoBehaviour {
 			break;
 		case "timedout":
 			EnemyTimedOut ();
+			break;
+		case "namerequest":
+			GPGScripts.SendMessage ("enemyname: test");
 			break;
 		default:
 			if (message.Contains ("enemyname: ")) {

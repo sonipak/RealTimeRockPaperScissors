@@ -20,5 +20,6 @@ public class Shade : MonoBehaviour {
 			sr.color = new Color (1f, 1f, 1f, i);
 			yield return null;
 		}
+		sr.color = new Color (1f, 1f, 1f, 0f);
 	}
 }
