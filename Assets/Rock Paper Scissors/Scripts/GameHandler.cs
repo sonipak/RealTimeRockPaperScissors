@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameHandler : MonoBehaviour {
 	GPGMethods GPGScripts;
-	public Text playerName, enemyName, playerScore, enemyScore, lastRoundStatus;
+	public Text playerName, enemyName, Score, lastRoundStatus;
 	public Button rock, paper, scissors;
 	public Shade shade;
+	public SelectedIcon selected;
 
 	string playerMove, enemyMove;
 	int playerScoreInt, enemyScoreInt;
@@ -20,13 +21,13 @@ public class GameHandler : MonoBehaviour {
 		enemyName.text = "...";
 
 		playerScoreInt = enemyScoreInt = 0;
-		playerScore.text = playerScoreInt.ToString();
-		enemyScore.text = enemyScoreInt.ToString ();
+		UpdateScore ();
 
 		rock.onClick.AddListener (RockPressed);
 		paper.onClick.AddListener (PaperPressed);
 		scissors.onClick.AddListener (ScissorsPressed);
 		DisableButtons ();
+
 
 	}
 	
@@ -139,7 +140,7 @@ public class GameHandler : MonoBehaviour {
 	void RoundWin(){
 		lastRoundStatus.text = "You won!";
 		playerScoreInt++;
-		playerScore.text = playerScoreInt.ToString ();
+		UpdateScore ();
 		playerMove = enemyMove = "";
 		EnableButtons ();
 	}
@@ -147,10 +148,19 @@ public class GameHandler : MonoBehaviour {
 	void RoundLoss(){
 		lastRoundStatus.text = "You lost!";
 		enemyScoreInt++;
-		enemyScore.text = enemyScoreInt.ToString ();
+		UpdateScore ();
 		playerMove = enemyMove = "";
 		EnableButtons ();
 	}
+
+	void UpdateScore(){
+		Score.text = playerScoreInt.ToString() + " : " + enemyScoreInt.ToString();
+	}
+
+	void UpdateSelected(int choice){
+		selected.SetImage (choice);
+	}
+
 	void EnemyQuit(){
 
 	}
@@ -164,18 +174,21 @@ public class GameHandler : MonoBehaviour {
 
 	void RockPressed(){
 		playerMove = "rock";
+		UpdateSelected (0);
 		GPGScripts.SendMessage (playerMove);
 		DisableButtons ();
 	}
 
 	void PaperPressed(){
 		playerMove = "paper";
+		UpdateSelected (1);
 		GPGScripts.SendMessage (playerMove);
 		DisableButtons ();
 	}
 
 	void ScissorsPressed(){
 		playerMove = "scissors";
+		UpdateSelected (2);
 		GPGScripts.SendMessage (playerMove);
 		DisableButtons ();
 	}
