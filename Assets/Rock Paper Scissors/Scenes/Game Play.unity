@@ -737,11 +737,10 @@ MonoBehaviour:
   playerScore: {fileID: 1697913730}
   enemyScore: {fileID: 361957654}
   lastRoundStatus: {fileID: 1955803121}
-  debugger: {fileID: 0}
   rock: {fileID: 1571536127}
   paper: {fileID: 1235970290}
   scissors: {fileID: 1035430076}
-  shade: {fileID: 944267602}
+  shade: {fileID: 944267605}
 --- !u!4 &1390643059
 Transform:
   m_ObjectHideFlags: 0

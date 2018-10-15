@@ -7,7 +7,7 @@ public class GameHandler : MonoBehaviour {
 	GPGMethods GPGScripts;
 	public Text playerName, enemyName, playerScore, enemyScore, lastRoundStatus;
 	public Button rock, paper, scissors;
-	public GameObject shade;
+	public Shade shade;
 
 	string playerMove, enemyMove;
 	int playerScoreInt, enemyScoreInt;
@@ -48,7 +48,7 @@ public class GameHandler : MonoBehaviour {
 
 	void ItsGameTime(){
 		GPGScripts.SendMessage ("enemyname: test"); 
-		shade.GetComponent<Shade> ().FadeOut ();
+		StartCoroutine(shade.FadeOut ());
 		EnableButtons ();
 
 	}
@@ -81,6 +81,7 @@ public class GameHandler : MonoBehaviour {
 		default:
 			if (message.Contains ("enemyname: ")) {
 				GPGScripts.EnemyName = message.Substring (11);
+				enemyName.text = GPGScripts.EnemyName;
 			}
 			break;
 		}
