@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameHandler : MonoBehaviour {
 	GPGMethods GPGScripts;
-	public Text playerName, enemyName, playerScore, enemyScore, lastRoundStatus, debugger;
+	public Text playerName, enemyName, playerScore, enemyScore, lastRoundStatus;
 	public Button rock, paper, scissors;
 	public GameObject shade;
 
@@ -14,7 +14,6 @@ public class GameHandler : MonoBehaviour {
 	bool gameStarted;
 	// Use this for initialization
 	void Start () {
-		debugger.text = "xd";
 		GPGScripts = GPGMethods.Instance;
 		GPGScripts.gameHandler = GetComponent<GameHandler> ();
 		playerName.text = PlayerPrefs.GetString("Name");
@@ -44,8 +43,7 @@ public class GameHandler : MonoBehaviour {
 		if (playerMove != "" && enemyMove != "") {
 			DetermineResult (playerMove, enemyMove);
 		}
-
-		debugger.text = "playermove: " + playerMove + " enemymove: " + enemyMove + "playerconnection: " + GPGScripts.PlayerConnectionConfirmed.ToString() + "  enemyconnection: " + GPGScripts.EnemyPlayerConnectionConfirmed.ToString();
+			
 	}
 
 	void ItsGameTime(){
@@ -153,7 +151,7 @@ public class GameHandler : MonoBehaviour {
 
 	}
 	void SetEnemyMove(string message){
-
+		enemyMove = message;
 	}
 
 	void RockPressed(){
