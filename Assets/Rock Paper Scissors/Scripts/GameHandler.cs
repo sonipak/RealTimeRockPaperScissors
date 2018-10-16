@@ -9,12 +9,14 @@ public class GameHandler : MonoBehaviour {
 	public Button rock, paper, scissors;
 	public Shade shade;
 	public SelectedIcon selected;
+	public Timer time;
 
 	string playerMove, enemyMove;
 	int playerScoreInt, enemyScoreInt;
 	bool gameStarted;
 	// Use this for initialization
 	void Start () {
+
 		GPGScripts = GPGMethods.Instance;
 		GPGScripts.gameHandler = GetComponent<GameHandler> ();
 		playerName.text = PlayerPrefs.GetString("Name");
@@ -27,7 +29,6 @@ public class GameHandler : MonoBehaviour {
 		paper.onClick.AddListener (PaperPressed);
 		scissors.onClick.AddListener (ScissorsPressed);
 		DisableButtons ();
-
 
 	}
 	
@@ -49,13 +50,18 @@ public class GameHandler : MonoBehaviour {
 			DetermineResult (playerMove, enemyMove);
 		}
 			
+		if (time.timer == 0) {
+			DisableButtons ();
+			SendMessage ("timedout");
+		}
+
 	}
 
 	void ItsGameTime(){
 		GPGScripts.SendMessage ("enemyname: test"); 
 		StartCoroutine(shade.FadeOut ());
+		StartCoroutine (time.StartTimer ());
 		EnableButtons ();
-
 	}
 
 	public void InterpretMessage(string message){

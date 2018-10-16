@@ -20,6 +20,7 @@ public class Timer : MonoBehaviour {
 
 	public IEnumerator StartTimer(){ 
 		timer = 10;
+		active = true;
 		for (int i = timer; i > 0; i--) {
 			if (active) {
 				timer = i;
